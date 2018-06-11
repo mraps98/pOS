@@ -1,0 +1,33 @@
+body{
+    margin:0;
+    background-color:rgba(206,66,244,0.5);
+}
+
+#loginBox{
+    background-color:rgba(255,255,255,0.8);
+    display:block;
+    border:2px solid rgba(255,255,255,1);
+    width:30%;
+    height:200px;
+    padding:30px;
+    margin:auto;
+    box-shadow: 5px 10px #888888;
+    display:none;
+}
+#loginBox div{
+    margin:20px;
+}
+
+#homeScreen{
+    /* display:none; */
+    width:100%;
+    margin:0px;
+}
+h1,p{
+    margin:0px;
+}
+
+#taskBar{
+    width:100%;
+    background-color: rgba(0,0,0,0.4);
+}
