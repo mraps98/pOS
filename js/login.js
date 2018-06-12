@@ -17,6 +17,8 @@ $(document).ready(function(){
         }
         if ($("#loginUsername").val() && $("#loginPassword").val()){
             if ($("#loginUsername").val() == LoginScreen.username && $("#loginPassword").val() == LoginScreen.password){
+                $("#loginUsername").val("");
+                $("#loginPassword").val("");
                 $("#loginBox").hide();
                 $("#homeScreen").show();
             }else{

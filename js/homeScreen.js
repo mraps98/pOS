@@ -6,27 +6,28 @@ $(document).ready(function(){
         settingsMenuElements: ["BACKGROUND"],
         shutDownMenuElements: ["LOGOUT"],
         dockElements: ["Files","Internet","Text Edit"],
+        appWindowNames: ["#fileManager","#internetBrowser","#textEditor"],
         dockElementsImages: ["files.png","internet.png","textEdit.png"]
     };
 
     
     HomeScreen.fillTaskBarMenus = function(){
         for(let i = 0; i <HomeScreen.POSMenuElements.length; i++){
-            $("#POSMenu").append("<li><button class='taskBarButton'>" + HomeScreen.POSMenuElements[i] + "</button></li>");
+            $("#POSMenu").append("<li><button id='" + HomeScreen.POSMenuElements[i] + "' class='taskBarButton'>" + HomeScreen.POSMenuElements[i] + "</button></li>");
         }
         for(let i = 0; i <HomeScreen.settingsMenuElements.length; i++){
-            $("#settingsMenu").append("<li><button class='taskBarButton'>" + HomeScreen.settingsMenuElements[i] + "</button></li>");
+            $("#settingsMenu").append("<li><button id='" + HomeScreen.settingsMenuElements[i] + "' class='taskBarButton'>" + HomeScreen.settingsMenuElements[i] + "</button></li>");
         }
         for(let i = 0; i <HomeScreen.shutDownMenuElements.length; i++){
-            $("#shutDownMenu").append("<li><button class='taskBarButton'>" + HomeScreen.shutDownMenuElements[i] + "</button></li>");
+            $("#shutDownMenu").append("<li><button id='" + HomeScreen.shutDownMenuElements[i] + "' class='taskBarButton'>" + HomeScreen.shutDownMenuElements[i] + "</button></li>");
         }
     };
 
     HomeScreen.fillDock = function(){
         for(let i = 0; i <HomeScreen.dockElements.length; i++){
-            $("#dock").append("<span class='dockItem'><button class='dockButton'><img src='./assets/dock/" + HomeScreen.dockElementsImages[i] + "'></button></span>");
+            $("#dock").append("<span class='dockItem'><button data-index='" + i + "' class='dockButton'><img src='./assets/dock/" + HomeScreen.dockElementsImages[i] + "'></button></span>");
         }
-    }
+    };
     
     HomeScreen.setLayout = function(){
         // homescreen size
@@ -42,6 +43,10 @@ $(document).ready(function(){
         $("#dock").css('bottom',0);
         $("#dock").show();
         $("#dock").css('left', (window.innerWidth - $("#dock").width())/2);
+
+        // windows
+        $(".window").css('top', (window.innerHeight - $(".window").height())/2);
+        $(".window").css('left', (window.innerWidth - $(".window").width())/2);
     };
     
     HomeScreen.update = function(){
@@ -50,6 +55,11 @@ $(document).ready(function(){
         $("#homeScreen").css('background-color',HomeScreen.backgroundColor);
     };
     
+    HomeScreen.logout = function(){
+        $("#homeScreen").hide();
+        $("#loginBox").show();
+    };
+
     HomeScreen.start = function(){
         HomeScreen.fillTaskBarMenus();
         HomeScreen.fillDock();
@@ -64,10 +74,29 @@ $(document).ready(function(){
         })
         $(document).on('mouseleave','.taskBarMenuBox',function(){
             $(this).hide();
-        });   
+        });
+
+        //app opening
+        $(document).on('click',".dockButton",function(){
+            $(".window").hide();
+            let index = $(this).attr('data-index');
+            $(HomeScreen.appWindowNames[index]).show();
+        });
+
+        //app closing
+        $(document).on('click','.windowCloseButton',function(){
+            $(".window").hide();
+        });
+
+        $(document).on('click','#LOGOUT',HomeScreen.logout);
     };
 
     HomeScreen.start();
 
-    $("#textEditor").show();
+    // $("#textEditor").show();
 });
+
+function closeAllApps(){
+    $("#titleBar").hide();
+}
+

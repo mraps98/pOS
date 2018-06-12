@@ -18,14 +18,12 @@
     </div>
 
     <!-- homescreen -->
-    <div id="homeScreen">
+<div id="homeScreen">
         <div id="taskBar">
             <button class="taskBarButton" data-menu="POSMenu">POS</button>
             <button class="taskBarButton" data-menu="settingsMenu">SETTINGS</button>
             <button class="taskBarButton" data-menu="shutDownMenu" id="shutDownButton"><img src="./assets/dock/shutDown.png"></button>
         </div>
-
-    </div>
 
     <!-- ToolBar Menus -->
     <div id="POSMenuBox" class="taskBarMenuBox">
@@ -42,16 +40,29 @@
     <div id="dock"></div>
 
     <!-- Text Editor -->
-    <iframe src="./apps/textEditor.html" id="textEditor" class="window"></iframe>
+    <div id="textEditor" class="window">
+        <div id="titleBar">
+                TEXT EDITOR
+                <!-- Cross Button -->
+                <button class="windowCloseButton taskBarButton">X</button>
+        </div>
+        <iframe scrolling="no" src="./apps/textEditor.html"></iframe>
+    </div>
         
     </div>
 
     <!-- Internet Browser -->
-    <iframe src="./apps/internetBrowser.html" id="internetBrowser" class="window"></iframe>
+    <div id="internetBrowser" class="window">
+            <div id="titleBar">
+                    INTERNET BROWSER
+                    <!-- Cross Button -->
+                    <button class="windowCloseButton taskBarButton">X</button>
+            </div>
+            <iframe scrolling="no" src="./apps/internetBrowser.html"></iframe>
+        </div>
     </div>
 
-    <!-- Cross Button -->
-    <button class="windowCloseButton">Cross</button>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="js/login.js"></script>
