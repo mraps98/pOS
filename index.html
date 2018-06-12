@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- loginbox -->
     <div id="loginBox">
         <div><h1>LOGIN TO POS</h1></div>
         <div>USERNAME: <input id="loginUsername" type="text"></div>
@@ -15,14 +16,44 @@
         <div><button id="loginButton">LOGIN</button></div>
         <span id="error" style="display:none">Invalid Credentials. Please Enter Again</span>
     </div>
+
+    <!-- homescreen -->
     <div id="homeScreen">
         <div id="taskBar">
-            <button>POS</button>
+            <button class="taskBarButton" data-menu="POSMenu">POS</button>
+            <button class="taskBarButton" data-menu="settingsMenu">SETTINGS</button>
+            <button class="taskBarButton" data-menu="shutDownMenu" id="shutDownButton"><img src="./assets/dock/shutDown.png"></button>
         </div>
+
     </div>
+
+    <!-- ToolBar Menus -->
+    <div id="POSMenuBox" class="taskBarMenuBox">
+        <ul id="POSMenu"></ul>
+    </div>
+    <div id="settingsMenuBox" class="taskBarMenuBox">
+        <ul id="settingsMenu"></ul>
+    </div>
+    <div id="shutDownMenuBox" class="taskBarMenuBox">
+        <ul id="shutDownMenu"></ul>
+    </div>
+
+    <!-- Dock -->
+    <div id="dock"></div>
+
+    <!-- Text Editor -->
+    <iframe src="./apps/textEditor.html" id="textEditor" class="window"></iframe>
+        
+    </div>
+
+    <!-- Internet Browser -->
+    <iframe src="./apps/internetBrowser.html" id="internetBrowser" class="window"></iframe>
+    </div>
+
+    <!-- Cross Button -->
+    <button class="windowCloseButton">Cross</button>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/login.js"></script>
     <script src="js/homeScreen.js"></script>
 </body>
